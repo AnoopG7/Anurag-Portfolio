@@ -1,0 +1,234 @@
+/* Education Section Styles */
+
+.education-section {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  min-height: 100vh;
+}
+
+.education-section .section-title {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.education-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.05) 0%, rgba(251, 191, 36, 0.02) 100%);
+  border: 1px solid rgba(251, 191, 36, 0.15);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.education-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #fbbf24 0%, #f59e0b 50%, transparent 100%);
+}
+
+.education-card:hover {
+  border-color: rgba(251, 191, 36, 0.3);
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(251, 191, 36, 0.05) 100%);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(251, 191, 36, 0.15);
+}
+
+.education-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.education-icon {
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.education-card:hover .education-icon {
+  transform: scale(1.15) rotate(10deg);
+}
+
+.education-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: #1a1a1a;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.education-content {
+  position: relative;
+  z-index: 1;
+}
+
+.degree {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fbbf24;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 0.75rem 0;
+}
+
+.field {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 0.75rem 0;
+  line-height: 1.4;
+}
+
+.institution {
+  font-size: 0.95rem;
+  color: #ddd;
+  font-weight: 500;
+  margin: 0 0 0.75rem 0;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.year {
+  font-size: 0.9rem;
+  color: #aaa;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.education-accent {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .education-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .education-section {
+    padding: 3rem 0;
+  }
+
+  .education-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .education-card {
+    padding: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    letter-spacing: 1px;
+    margin-bottom: 3rem;
+  }
+
+  .education-icon {
+    font-size: 2rem;
+  }
+
+  .degree {
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+  }
+
+  .field {
+    font-size: 0.95rem;
+  }
+
+  .institution {
+    font-size: 0.9rem;
+  }
+
+  .year {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .education-section {
+    padding: 2rem 0;
+  }
+
+  .education-grid {
+    gap: 1rem;
+  }
+
+  .education-card {
+    padding: 1.25rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .education-card-header {
+    margin-bottom: 1rem;
+  }
+
+  .education-icon {
+    font-size: 1.75rem;
+  }
+
+  .education-badge {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.7rem;
+  }
+
+  .degree {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .field {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .institution {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .year {
+    font-size: 0.8rem;
+  }
+
+  .education-accent {
+    width: 80px;
+    height: 80px;
+  }
+}
