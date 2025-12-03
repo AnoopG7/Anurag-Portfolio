@@ -2,7 +2,7 @@ import React from 'react';
 
 interface Software {
   name: string;
-  icon: string;
+  logo: string;
 }
 
 interface Job {
@@ -14,12 +14,12 @@ interface Job {
 
 const Experience: React.FC = () => {
   const softwareSkills: Software[] = [
-    { name: 'DaVinci Resolve', icon: '🎬' },
-    { name: 'Figma', icon: '🎨' },
-    { name: 'Corel', icon: '✏️' },
-    { name: 'Zbrush', icon: '🖌️' },
-    { name: 'Premiere Pro', icon: '🎥' },
-    { name: 'After Effects', icon: '✨' },
+    { name: 'DaVinci Resolve', logo: 'https://cdn.simpleicons.org/davinciresolve' },
+    { name: 'Wonder Share Filmora', logo: 'https://cdn.simpleicons.org/filmora' },
+    { name: 'Canva', logo: 'https://cdn.simpleicons.org/canva' },
+    { name: 'CapCut', logo: 'https://cdn.simpleicons.org/capcut' },
+    { name: 'Adobe Premiere Pro', logo: 'https://cdn.simpleicons.org/adobepremierepro' },
+    { name: 'After Effects', logo: 'https://cdn.simpleicons.org/adobeaftereffects' },
   ];
 
   const workExperience: Job[] = [
@@ -52,7 +52,11 @@ const Experience: React.FC = () => {
           <div className="software-grid">
             {softwareSkills.map((software, index) => (
               <div key={index} className="software-item">
-                <div className="software-icon">{software.icon}</div>
+                <div className="software-logo">
+                  <img src={software.logo} alt={software.name} onError={(e) => {
+                    e.currentTarget.src = 'https://via.placeholder.com/80?text=' + software.name.split(' ')[0];
+                  }} />
+                </div>
                 <p className="software-name">{software.name}</p>
               </div>
             ))}

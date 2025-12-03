@@ -29,16 +29,6 @@
   overflow: hidden;
 }
 
-.education-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #fbbf24 0%, #f59e0b 50%, transparent 100%);
-}
-
 .education-card:hover {
   border-color: rgba(251, 191, 36, 0.3);
   background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(251, 191, 36, 0.05) 100%);

@@ -10,7 +10,6 @@ const Navigation: React.FC = () => {
 
   const menuItems = [
     { label: 'Home', path: '/' },
-    { label: 'Portfolio', path: '/portfolio' },
     { label: 'Projects', path: '/projects' },
     { label: 'Services', path: '/services' },
     { label: 'About', path: '/about' },

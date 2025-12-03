@@ -155,7 +155,6 @@
   gap: 1rem;
   padding: 1rem;
   background: rgba(251, 191, 36, 0.05);
-  border-left: 3px solid #fbbf24;
   border-radius: 8px;
   transition: all 0.3s ease;
 }
