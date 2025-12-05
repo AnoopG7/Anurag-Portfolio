@@ -14,12 +14,12 @@ interface Job {
 
 const Experience: React.FC = () => {
   const softwareSkills: Software[] = [
-    { name: 'DaVinci Resolve', logo: 'https://cdn.simpleicons.org/davinciresolve' },
-    { name: 'Wonder Share Filmora', logo: 'https://cdn.simpleicons.org/filmora' },
-    { name: 'Canva', logo: 'https://cdn.simpleicons.org/canva' },
-    { name: 'CapCut', logo: 'https://cdn.simpleicons.org/capcut' },
-    { name: 'Adobe Premiere Pro', logo: 'https://cdn.simpleicons.org/adobepremierepro' },
-    { name: 'After Effects', logo: 'https://cdn.simpleicons.org/adobeaftereffects' },
+    { name: 'DaVinci Resolve', logo: '/Davinci.jpeg' },
+    { name: 'Wonder Share Filmora', logo: '/Premier.jpeg' },
+    { name: 'Canva', logo: '/Canva.jpeg' },
+    { name: 'CapCut', logo: '/Capcut.jpeg' },
+    { name: 'Adobe Premiere Pro', logo: '/Premier.jpeg' },
+    { name: 'After Effects', logo: '/AfterEffects.jpeg' },
   ];
 
   const workExperience: Job[] = [
