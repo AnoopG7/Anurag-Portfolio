@@ -53,24 +53,24 @@ const Projects: React.FC = () => {
   useEffect(() => {
     const preloadVideo = (videoUrl: string) => {
       if (loadedVideos.has(videoUrl)) return;
-      
+
       const link = document.createElement('link');
       link.rel = 'preload';
       link.as = 'video';
       link.href = videoUrl;
       document.head.appendChild(link);
-      
+
       setLoadedVideos(prev => new Set([...prev, videoUrl]));
     };
 
     // Preload current and next slide videos
     const currentProject = projects[currentSlide];
     const nextProject = projects[(currentSlide + 1) % projects.length];
-    
+
     if (currentProject?.videos) {
       currentProject.videos.forEach(preloadVideo);
     }
-    
+
     if (nextProject?.videos) {
       nextProject.videos.forEach(preloadVideo);
     }

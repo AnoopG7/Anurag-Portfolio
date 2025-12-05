@@ -149,21 +149,6 @@ a:hover {
   color: var(--color-accent-light);
 }
 
-.link-underline::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--color-accent);
-  transition: width var(--transition-normal);
-}
-
-.link-underline:hover::after {
-  width: 100%;
-}
-
 /* Containers */
 .container {
   width: 100%;
@@ -185,50 +170,7 @@ a:hover {
   padding: var(--spacing-3xl) 0;
 }
 
-.section-sm {
-  padding: var(--spacing-xl) 0;
-}
-
-.section-lg {
-  padding: var(--spacing-3xl) 0;
-}
-
 /* Utilities */
-.gradient-text {
-  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.glass-effect {
-  background: rgba(30, 41, 59, 0.8);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(51, 65, 85, 0.3);
-}
-
-.card-hover {
-  transition: all var(--transition-normal);
-  cursor: pointer;
-}
-
-.card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-xl);
-}
-
-.fade-in {
-  animation: fadeIn var(--transition-normal) ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 
 .slide-up {
   animation: slideUp var(--transition-normal) ease-in-out;
