@@ -1,6 +1,13 @@
 import React from 'react';
 
 const Home: React.FC = () => {
+  const handleScrollTo = (sectionId: string) => {
+    const targetElement = document.getElementById(sectionId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section
       id="home"
@@ -83,31 +90,18 @@ const Home: React.FC = () => {
 
         {/* CTA Buttons */}
         <div className="hero-cta animate-slide-up animate-stagger-3">
-          <button className="hero-btn hero-btn-primary">
+          <button 
+            className="hero-btn hero-btn-primary"
+            onClick={() => handleScrollTo('projects')}
+          >
             View My Work
           </button>
-          <button className="hero-btn hero-btn-secondary">
+          <button 
+            className="hero-btn hero-btn-secondary"
+            onClick={() => handleScrollTo('contact')}
+          >
             Get In Touch
           </button>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="scroll-indicator">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12 5V19M12 19L5 12M12 19L19 12"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
         </div>
       </div>
 

@@ -1,11 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
 import Home from './pages/Home';
+import Projects from './pages/Projects';
 import About from './pages/About';
+import Services from './pages/Services';
 import Experience from './pages/Experience';
 import Education from './pages/Education';
-import Services from './pages/Services';
-import Projects from './pages/Projects';
+import LazySection from './components/LazySection';
 
 function App() {
   return (
@@ -16,20 +17,27 @@ function App() {
             path="/"
             element={
               <>
-                <Home />
-                <Projects />
-                <About />
-                <Services />
-                <Experience />
-                <Education />
+                <section id="home">
+                  <Home />
+                </section>
+                <LazySection id="projects">
+                  <Projects />
+                </LazySection>
+                <LazySection id="about">
+                  <About />
+                </LazySection>
+                <LazySection id="services">
+                  <Services />
+                </LazySection>
+                <LazySection id="experience">
+                  <Experience />
+                </LazySection>
+                <LazySection id="education">
+                  <Education />
+                </LazySection>
               </>
             }
           />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/experience" element={<Experience />} />
-          <Route path="/education" element={<Education />} />
         </Routes>
       </MainLayout>
     </Router>

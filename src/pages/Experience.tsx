@@ -53,7 +53,11 @@ const Experience: React.FC = () => {
             {softwareSkills.map((software, index) => (
               <div key={index} className="software-item">
                 <div className="software-logo">
-                  <img src={software.logo} alt={software.name} onError={(e) => {
+                  <img 
+                    src={software.logo} 
+                    alt={software.name}
+                    loading="lazy"
+                    onError={(e) => {
                     e.currentTarget.src = 'https://via.placeholder.com/80?text=' + software.name.split(' ')[0];
                   }} />
                 </div>

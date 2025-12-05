@@ -37,7 +37,6 @@ const Education: React.FC = () => {
     <section id="education" className="education-section">
       <div className="container mx-auto px-4">
         <h2 className="section-title">EDUCATION</h2>
-        
         <div className="education-grid">
           {educationData.map((edu, index) => (
             <div key={index} className="education-card">
@@ -45,7 +44,6 @@ const Education: React.FC = () => {
                 <div className="education-icon">🎓</div>
                 <div className="education-badge">{edu.status}</div>
               </div>
-              
               <div className="education-content">
                 <h3 className="degree">{edu.degree}</h3>
                 <p className="field">{edu.field}</p>
