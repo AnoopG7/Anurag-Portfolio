@@ -38,7 +38,17 @@ const About: React.FC = () => {
           <div className="about-image-container">
             <div className="about-image-placeholder">
               <div className="image-decoration"></div>
-              <p className="text-center text-sm text-gray-400">Image Placeholder</p>
+              <img 
+                src="/anurag.png" 
+                alt="Anurag Pal" 
+                loading="lazy"
+                style={{ 
+                  width: '100%', 
+                  height: '100%', 
+                  objectFit: 'cover',
+                  borderRadius: '20px'
+                }}
+              />
             </div>
           </div>
 

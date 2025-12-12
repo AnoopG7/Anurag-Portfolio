@@ -48,19 +48,25 @@
   align-items: center;
   justify-content: center;
   transition: transform 0.3s ease;
+  overflow: hidden;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px;
 }
 
 .software-logo img {
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 85%;
+  max-height: 85%;
   object-fit: contain;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
   transition: all 0.3s ease;
+  border-radius: 12px;
 }
 
 .software-logo.enlarged {
   width: 100px;
   height: 100px;
+  padding: 10px;
 }
 
 .software-item:hover .software-logo img {

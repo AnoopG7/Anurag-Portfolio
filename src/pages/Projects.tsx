@@ -17,34 +17,46 @@ const Projects: React.FC = () => {
     {
       id: 1,
       number: 'PROJECT 1',
-      title: 'Wings',
-      company: 'Under pixelluka',
+      title: 'B Creamy Jane',
+      company: 'Pixelluka',
       videos: [
-        '/videos/project1-1.mp4',
-        '/videos/project1-2.mp4',
-        '/videos/project1-3.mp4',
+        'https://drive.google.com/file/d/1ibHfMFPffr-bavmxfXFKVnIrMYElSkfm/preview',
       ],
     },
     {
       id: 2,
       number: 'PROJECT 2',
-      title: 'Event Coverage',
-      company: 'DYO Chief',
+      title: 'Turf',
+      company: 'Sports Facility',
       videos: [
-        '/videos/project2-1.mp4',
-        '/videos/project2-2.mp4',
-        '/videos/project2-3.mp4',
+        'https://drive.google.com/file/d/1e7NLj9uq0BKzcxz1P8G8QBhuW5IJ3j8u/preview',
       ],
     },
     {
       id: 3,
       number: 'PROJECT 3',
-      title: 'Brand Story',
-      company: 'Khilonamart',
+      title: 'Khilona Mart',
+      company: 'E-commerce',
       videos: [
-        '/videos/project3-1.mp4',
-        '/videos/project3-2.mp4',
-        '/videos/project3-3.mp4',
+        'https://drive.google.com/file/d/1hsKuwJYyYp47DBMWECVH1ZxU9Yp2ckgL/preview',
+      ],
+    },
+    {
+      id: 4,
+      number: 'PROJECT 4',
+      title: 'Gym',
+      company: 'Fitness Center',
+      videos: [
+        'https://drive.google.com/file/d/1CsUJn9ehg9xXDOxZGXEnpegn4spD5YfS/preview',
+      ],
+    },
+    {
+      id: 5,
+      number: 'PROJECT 5',
+      title: 'NGO',
+      company: 'Social Cause',
+      videos: [
+        'https://drive.google.com/file/d/1ganbGKqy4ELqT2yHipu7C9gbFU2TmfFj/preview',
       ],
     },
   ];
@@ -75,6 +87,10 @@ const Projects: React.FC = () => {
       nextProject.videos.forEach(preloadVideo);
     }
   }, [currentSlide, projects, loadedVideos]);
+
+  // Get the indices for previous, current, and next slides (circular)
+  const getPrevIndex = () => (currentSlide - 1 + projects.length) % projects.length;
+  const getNextIndex = () => (currentSlide + 1) % projects.length;
 
   const handlePrevious = () => {
     setAutoPlay(false);
@@ -110,25 +126,61 @@ const Projects: React.FC = () => {
         >
           {/* Slides */}
           <div className="carousel-wrapper">
-            {projects.map((project, index) => (
-              <div
-                key={project.id}
-                className={`carousel-slide ${index === currentSlide ? 'active' : ''}`}
-              >
-                {/* Project Info */}
-                <div className="project-info">
-                  <h2 className="project-number">{project.number}</h2>
-                  <h3 className="project-title">{project.title}</h3>
-                  <p className="project-company">{project.company}</p>
+            <div className="carousel-slide active">
+              {/* Project Info - Current Project */}
+              <div className="project-info">
+                <h2 className="project-number">{projects[currentSlide].number}</h2>
+                <h3 className="project-title">{projects[currentSlide].title}</h3>
+                <p className="project-company">{projects[currentSlide].company}</p>
+              </div>
+
+              {/* Mobile Frame with Video - Circular Display */}
+              <div className="mobile-frames-container">
+                {/* Left Phone - Previous Project */}
+                <div className="mobile-frame left">
+                  <div className="phone-body">
+                    <div className="phone-notch"></div>
+                    {projects[getPrevIndex()].videos?.[0] ? (
+                      projects[getPrevIndex()].videos[0].includes('drive.google.com') ? (
+                        <iframe
+                          src={projects[getPrevIndex()].videos[0]}
+                          className="video-placeholder"
+                          allow="autoplay"
+                          style={{ border: 'none', width: '100%', height: '100%' }}
+                        />
+                      ) : (
+                        <video
+                          className="video-placeholder"
+                          preload="metadata"
+                          muted
+                          playsInline
+                          controls
+                        >
+                          <source src={projects[getPrevIndex()].videos[0]} type="video/mp4" />
+                          Your browser does not support the video tag.
+                        </video>
+                      )
+                    ) : (
+                      <div className="video-placeholder">
+                        <span className="video-icon">🎬</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
 
-                {/* Mobile Frame with Video Placeholder */}
-                <div className="mobile-frames-container">
-                  {/* Left Phone */}
-                  <div className="mobile-frame left">
-                    <div className="phone-body">
-                      <div className="phone-notch"></div>
-                      {project.videos?.[0] ? (
+                {/* Center Phone - Current Project */}
+                <div className="mobile-frame center">
+                  <div className="phone-body">
+                    <div className="phone-notch"></div>
+                    {projects[currentSlide].videos?.[0] ? (
+                      projects[currentSlide].videos[0].includes('drive.google.com') ? (
+                        <iframe
+                          src={projects[currentSlide].videos[0]}
+                          className="video-placeholder"
+                          allow="autoplay"
+                          style={{ border: 'none', width: '100%', height: '100%' }}
+                        />
+                      ) : (
                         <video
                           className="video-placeholder"
                           preload="metadata"
@@ -136,22 +188,31 @@ const Projects: React.FC = () => {
                           playsInline
                           controls
                         >
-                          <source src={project.videos[0]} type="video/mp4" />
+                          <source src={projects[currentSlide].videos[0]} type="video/mp4" />
                           Your browser does not support the video tag.
                         </video>
-                      ) : (
-                        <div className="video-placeholder">
-                          <span className="video-icon">🎬</span>
-                        </div>
-                      )}
-                    </div>
+                      )
+                    ) : (
+                      <div className="video-placeholder">
+                        <span className="video-icon">🎬</span>
+                      </div>
+                    )}
                   </div>
+                </div>
 
-                  {/* Center Phone */}
-                  <div className="mobile-frame center">
-                    <div className="phone-body">
-                      <div className="phone-notch"></div>
-                      {project.videos?.[1] ? (
+                {/* Right Phone - Next Project */}
+                <div className="mobile-frame right">
+                  <div className="phone-body">
+                    <div className="phone-notch"></div>
+                    {projects[getNextIndex()].videos?.[0] ? (
+                      projects[getNextIndex()].videos[0].includes('drive.google.com') ? (
+                        <iframe
+                          src={projects[getNextIndex()].videos[0]}
+                          className="video-placeholder"
+                          allow="autoplay"
+                          style={{ border: 'none', width: '100%', height: '100%' }}
+                        />
+                      ) : (
                         <video
                           className="video-placeholder"
                           preload="metadata"
@@ -159,42 +220,19 @@ const Projects: React.FC = () => {
                           playsInline
                           controls
                         >
-                          <source src={project.videos[1]} type="video/mp4" />
+                          <source src={projects[getNextIndex()].videos[0]} type="video/mp4" />
                           Your browser does not support the video tag.
                         </video>
-                      ) : (
-                        <div className="video-placeholder">
-                          <span className="video-icon">🎬</span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Right Phone */}
-                  <div className="mobile-frame right">
-                    <div className="phone-body">
-                      <div className="phone-notch"></div>
-                      {project.videos?.[2] ? (
-                        <video
-                          className="video-placeholder"
-                          preload="metadata"
-                          muted
-                          playsInline
-                          controls
-                        >
-                          <source src={project.videos[2]} type="video/mp4" />
-                          Your browser does not support the video tag.
-                        </video>
-                      ) : (
-                        <div className="video-placeholder">
-                          <span className="video-icon">🎬</span>
-                        </div>
-                      )}
-                    </div>
+                      )
+                    ) : (
+                      <div className="video-placeholder">
+                        <span className="video-icon">🎬</span>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
 
           {/* Navigation Arrows */}
