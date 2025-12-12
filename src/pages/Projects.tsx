@@ -129,7 +129,6 @@ const Projects: React.FC = () => {
                         <iframe
                           src={projects[getPrevIndex()].videos?.[0] || ''}
                           className="video-placeholder"
-                          allow="autoplay"
                           style={{ border: 'none', width: '100%', height: '100%' }}
                         />
                       ) : (
@@ -157,11 +156,10 @@ const Projects: React.FC = () => {
                   <div className="phone-body">
                     <div className="phone-notch"></div>
                     {projects[currentSlide].videos?.[0] ? (
-                      projects[currentSlide].videos[0].includes('drive.google.com') ? (
+                      projects[currentSlide].videos?.[0]?.includes('drive.google.com') ? (
                         <iframe
-                          src={projects[currentSlide].videos[0]}
+                          src={projects[currentSlide].videos?.[0] || ''}
                           className="video-placeholder"
-                          allow="autoplay"
                           style={{ border: 'none', width: '100%', height: '100%' }}
                         />
                       ) : (
@@ -172,7 +170,7 @@ const Projects: React.FC = () => {
                           playsInline
                           controls
                         >
-                          <source src={projects[currentSlide].videos[0]} type="video/mp4" />
+                          <source src={projects[currentSlide].videos?.[0] || ''} type="video/mp4" />
                           Your browser does not support the video tag.
                         </video>
                       )
@@ -193,7 +191,6 @@ const Projects: React.FC = () => {
                         <iframe
                           src={projects[getNextIndex()].videos?.[0] || ''}
                           className="video-placeholder"
-                          allow="autoplay"
                           style={{ border: 'none', width: '100%', height: '100%' }}
                         />
                       ) : (
