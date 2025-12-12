@@ -329,8 +329,8 @@
   }
 
   .phone-body {
-    width: 200px;
-    height: 400px;
+    width: 280px;
+    height: 560px;
   }
 
   .carousel-arrow {
@@ -388,16 +388,16 @@
   }
 
   .phone-body {
-    width: 180px;
-    height: 360px;
-    border-radius: 30px;
+    width: 260px;
+    height: 520px;
+    border-radius: 35px;
     border: 10px solid #222;
   }
 
   .phone-notch {
-    width: 130px;
-    height: 24px;
-    border-radius: 0 0 20px 20px;
+    width: 140px;
+    height: 26px;
+    border-radius: 0 0 22px 22px;
   }
 
   .carousel-arrow {
