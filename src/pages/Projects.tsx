@@ -10,7 +10,6 @@ interface Project {
 
 const Projects: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [autoPlay, setAutoPlay] = useState(true);
   const [loadedVideos, setLoadedVideos] = useState<Set<string>>(new Set());
 
   const projects: Project[] = [
@@ -93,37 +92,22 @@ const Projects: React.FC = () => {
   const getNextIndex = () => (currentSlide + 1) % projects.length;
 
   const handlePrevious = () => {
-    setAutoPlay(false);
     setCurrentSlide((prev) => (prev - 1 + projects.length) % projects.length);
   };
 
   const handleNext = () => {
-    setAutoPlay(false);
     setCurrentSlide((prev) => (prev + 1) % projects.length);
   };
 
   const goToSlide = (index: number) => {
-    setAutoPlay(false);
     setCurrentSlide(index);
-  };
-
-  const handleMouseEnter = () => {
-    setAutoPlay(false);
-  };
-
-  const handleMouseLeave = () => {
-    setAutoPlay(true);
   };
 
   return (
     <section id="projects" className="projects-section">
       <div className="container mx-auto px-4">
         {/* Carousel Container */}
-        <div
-          className="carousel-container"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
+        <div className="carousel-container">
           {/* Slides */}
           <div className="carousel-wrapper">
             <div className="carousel-slide active">
@@ -141,9 +125,9 @@ const Projects: React.FC = () => {
                   <div className="phone-body">
                     <div className="phone-notch"></div>
                     {projects[getPrevIndex()].videos?.[0] ? (
-                      projects[getPrevIndex()].videos[0].includes('drive.google.com') ? (
+                      projects[getPrevIndex()].videos?.[0]?.includes('drive.google.com') ? (
                         <iframe
-                          src={projects[getPrevIndex()].videos[0]}
+                          src={projects[getPrevIndex()].videos?.[0] || ''}
                           className="video-placeholder"
                           allow="autoplay"
                           style={{ border: 'none', width: '100%', height: '100%' }}
@@ -156,7 +140,7 @@ const Projects: React.FC = () => {
                           playsInline
                           controls
                         >
-                          <source src={projects[getPrevIndex()].videos[0]} type="video/mp4" />
+                          <source src={projects[getPrevIndex()].videos?.[0] || ''} type="video/mp4" />
                           Your browser does not support the video tag.
                         </video>
                       )
@@ -205,9 +189,9 @@ const Projects: React.FC = () => {
                   <div className="phone-body">
                     <div className="phone-notch"></div>
                     {projects[getNextIndex()].videos?.[0] ? (
-                      projects[getNextIndex()].videos[0].includes('drive.google.com') ? (
+                      projects[getNextIndex()].videos?.[0]?.includes('drive.google.com') ? (
                         <iframe
-                          src={projects[getNextIndex()].videos[0]}
+                          src={projects[getNextIndex()].videos?.[0] || ''}
                           className="video-placeholder"
                           allow="autoplay"
                           style={{ border: 'none', width: '100%', height: '100%' }}
@@ -220,7 +204,7 @@ const Projects: React.FC = () => {
                           playsInline
                           controls
                         >
-                          <source src={projects[getNextIndex()].videos[0]} type="video/mp4" />
+                          <source src={projects[getNextIndex()].videos?.[0] || ''} type="video/mp4" />
                           Your browser does not support the video tag.
                         </video>
                       )
